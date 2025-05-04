@@ -24,9 +24,8 @@
       z-index: -1;
       top: 0;
       left: 0;
-    }
-    
-    nav {
+    }  
+  nav {
   position: fixed;
   width: 100%;
   background: rgba(255,255,255,0.9);
@@ -137,40 +136,138 @@ nav a.active {
       margin-bottom: 1rem;
       color: #1A5276;
     }
+
     #skills h1 {
-      font-size: 3.2rem;
-      color: #117A8B;
-      position: relative;
-    }
-    #skills h1::after {
-      content: "";
-      width: 80px;
-      height: 4px;
-      background: #117A8B;
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-      border-radius: 10px;
-    }
-    .skills span, .projects a {
-    background: #5DADE2;
-    color: white;
-    padding: 0.7rem 1.4rem;
-    margin: 0.5rem;
-    border-radius: 25px;
-    display: inline-block;
-    text-decoration: none;
-    font-weight: bold;
-    box-shadow: 0 4px 8px rgba(93, 173, 226, 0.4); /* 🔥 Subtle glow */
-    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-  }
+  font-size: 3.2rem;
+  color: #117A8B;
+  position: relative;
+}
+#skills h1::after {
+  content: "";
+  width: 80px;
+  height: 4px;
+  background: #117A8B;
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10px;
+}
+
+.skills span,
+.projects a {
+  background: #5DADE2;
+  color: white;
+  padding: 0.7rem 1.4rem;
+  margin: 0.5rem;
+  border-radius: 25px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(93, 173, 226, 0.4); /* 🔥 Subtle glow */
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.skill-group {
+  flex: 1 1 240px;
+  max-width: 260px;
+  min-height: 220px;
+  background: rgba(20, 20, 25, 0.4); /* Darker matte glass base */
+  padding: 1.2rem 1rem;
+  border-radius: 20px;
+  box-shadow:
+    0 0 0 1px rgba(93, 173, 226, 0.2),       /* soft border glow */
+    0 6px 12px rgba(0, 0, 0, 0.25);          /* drop shadow */
+  backdrop-filter: blur(10px);
+  color: #f0f0f0;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(93, 173, 226, 0.25);
+}
+body:not(.dark) .skill-group {
+  background: rgba(0, 0, 0, 0.05); /* light glass tint */
+  color: #2C3E50;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark) .skill-group h3 {
+  color: #117A8B;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body:not(.dark) .skill-group li {
+  color: #2C3E50;
+}
+
+.skill-group:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow:
+    0 0 0 1.5px rgba(93, 173, 226, 0.35),    /* brighter edge */
+    0 10px 20px rgba(0, 0, 0, 0.4);          /* deeper drop */
+  background: rgba(35, 45, 60, 0.45);
+}
+
+.skill-group h3 {
+  font-size: 1.5rem;
+  color: #5dade2;
+  margin-bottom: 1rem;
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.skill-group ul {
+  list-style-type: none;
+  padding-left: 0rem;
+}
+
+.skill-group li {
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  transition: color 0.3s ease;
+}
+
+.skill-group:hover li {
+  color: #ffffff;
+}
+.skill-group h3 {
+  font-size: 1.2rem;
+  color: #5dade2;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.skill-group ul {
+  list-style-type: none;
+  padding-left: 0;
+  text-align: center;
+}
+
+.skill-group li {
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
   .contact-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.2rem;
   margin-top: 1rem;
+}
+@media (max-width: 600px) {
+  .skill-group {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
 }
 
 .button-row {
@@ -213,7 +310,7 @@ nav a.active {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
-  .expertise-container {
+.expertise-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -221,41 +318,76 @@ nav a.active {
   max-width: 1100px;
   margin-top: 2rem;
 }
+
 .expertise-block {
-  background: #ffffffee;
-  padding: 1.5rem;
-  border-radius: 10px;
-  width: calc(33.333% - 2rem); /* Exactly 3 per row with spacing */
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  text-align: left;
+  background: rgba(255, 255, 255, 0.06); /* Glassy white with transparency */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.8rem;
+  border: 1px solid rgba(93, 173, 226, 0.3);
+  border-radius: 16px;
+  width: calc(33.333% - 2rem);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  text-align: center;
   box-sizing: border-box;
+  transition: all 0.3s ease;
+  color: #f0f0f0;
+}
+
+.expertise-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid rgba(93, 173, 226, 0.5);
 }
 
 .expertise-block h3 {
-  font-size: 1.3rem;
-  color: #1A5276;
+  font-size: 1.25rem;
+  color: #5dade2;
   margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
 .expertise-block .line {
   height: 2px;
   width: 50px;
   background: #5dade2;
-  margin-bottom: 1rem;
+  margin: 0 auto 1rem;
   border-radius: 2px;
 }
 
 .expertise-block p {
   font-size: 0.95rem;
-  line-height: 1.5;
-  color: #2C3E50;
+  line-height: 1.6;
+  color: #cfd8dc;
 }
-.expertise-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+
+.expertise-block img {
+  width: 50px;
+  margin-bottom: 1rem;
+  transition: transform 0.3s ease;
 }
+
+.expertise-block:hover img {
+  transform: scale(1.1);
+}
+
+body:not(.dark) .expertise-block {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2c3e50;
+}
+
+body:not(.dark) .expertise-block h3 {
+  color: #117A8B;
+}
+
+body:not(.dark) .expertise-block p {
+  color: #050606;
+}
+
+body:not(.dark) .expertise-block .line {
+  background: #117A8B;
+}
+
 .work-container {
   display: flex;
   flex-wrap: wrap;
@@ -266,19 +398,35 @@ nav a.active {
 }
 
 .work-block {
-  background: #ffffffee;
-  padding: 1.5rem;
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.8rem;
+  border-radius: 16px;
   width: calc(50% - 1rem);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow:
+    0 0 0 1px rgba(93, 173, 226, 0.2),
+    0 6px 16px rgba(0, 0, 0, 0.15);
   text-align: left;
   box-sizing: border-box;
+  color: #f0f0f0;
+  transition: all 0.35s ease;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.work-block:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow:
+    0 0 0 1.5px rgba(93, 173, 226, 0.35),
+    0 10px 24px rgba(0, 0, 0, 0.3);
 }
 
 .work-block h3 {
   font-size: 1.3rem;
-  color: #1A5276;
-  margin-bottom: 0.4rem;
+  color: #5dade2;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
 
 .work-block .line {
@@ -292,14 +440,33 @@ nav a.active {
 .work-block .place {
   font-weight: 600;
   font-size: 0.9rem;
-  color: #34495e;
+  color: #d0dbe5;
   margin-bottom: 0.5rem;
 }
 
 .work-block p {
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  color: #cfd8dc;
+}
+body:not(.dark) .work-block {
+  background: rgba(255, 255, 255, 0.95);
   color: #2c3e50;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+body:not(.dark) .work-block h3 {
+  color: #117A8B;
+}
+
+body:not(.dark) .work-block p,
+body:not(.dark) .work-block .place {
+  color: #2c3e50;
+}
+
+body:not(.dark) .work-block .line {
+  background: #117A8B;
 }
 
 .skill-grid {
@@ -342,36 +509,7 @@ nav a.active {
   max-width: 900px;
   margin-inline: auto;
 }
-.education-block {
-  background: #ffffffee;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  max-width: 700px;
-  margin-bottom: 2rem;
-  text-align: left;
-}
 
-.education-block h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #1A5276;
-  margin-bottom: 0.5rem;
-}
-
-.education-block .sub {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: #34495e;
-  margin-bottom: 0.3rem;
-}
-
-.education-block .courses {
-  margin-top: 0.5rem;
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: #2C3E50;
-}
 .education-container {
   display: flex;
   flex-wrap: wrap;
@@ -384,39 +522,97 @@ nav a.active {
 .education-block {
   flex: 1 1 300px;
   max-width: 500px;
-  background: #ffffffee;
   padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  text-align: left;
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(93, 173, 226, 0.3);
   box-sizing: border-box;
+  text-align: left;
+  transition: all 0.3s ease;
+  color: #f0f0f0;
+}
+
+.education-block:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
 }
 
 .education-block h3 {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #1A5276;
-  margin-bottom: 0.3rem;
+  color: #5dade2;
+  margin-bottom: 0.5rem;
 }
 
 .education-block .sub {
   font-size: 0.95rem;
   font-weight: 500;
-  color: #34495e;
-  margin-bottom: 0.3rem;
+  color: #cfd8dc;
+  margin-bottom: 0.5rem;
+  
+}
+
+.education-block .line {
+  height: 2px;
+  width: 50px;
+  background: #5dade2;
+  margin: 0.8rem 0;
+  border-radius: 2px;
 }
 
 .education-block .courses {
   margin-top: 0.5rem;
-  font-size: 0.88rem;
-  line-height: 1.5;
-  color: #2C3E50;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #cfd8dc;
 }
 
-@media (max-width: 768px) {
-  .project-block {
-    width: 100%;
+@media (prefers-color-scheme: light) {
+  .education-block {
+    background: rgba(255, 255, 255, 0.95);
+    color: #2c3e50;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
   }
+
+  .education-block h3 {
+    color: #117A8B;
+  }
+
+  .education-block .sub,
+  .education-block .courses {
+    color: #2c3e50;
+  }
+
+  .education-block .line {
+    background: #117A8B;
+  }
+}
+body:not(.dark) .education-block {
+  background: rgba(255, 255, 255, 0.98);
+  color: #1a1a1a;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+body:not(.dark) .education-block h3 {
+  color: #117A8B;
+}
+
+body:not(.dark) .education-block .sub,
+body:not(.dark) .education-block .courses {
+  color: #1a1a1a;
+}
+
+body:not(.dark) .education-block .line {
+  background: #117A8B;
+}
+
+body:not(.dark) .education-block strong {
+  color: #1A5276;
 }
 
 .projects-container {
@@ -442,24 +638,39 @@ nav a.active {
 
 .project-block {
   display: flex;
-  justify-content: space-between;
   flex-direction: column;
-  background: #ffffffee;
+  justify-content: space-between;
+  position: relative;
   padding: 1.5rem 1.2rem;
-  border-radius: 14px;
+  border-radius: 20px;
   width: calc(50% - 2rem);
   min-width: 300px;
-  position: relative;
   text-decoration: none;
   color: inherit;
-  box-shadow: 0 0 0 rgba(0,0,0,0);
-  transition: 0.3s ease;
+
+  background: rgba(26, 82, 118, 0.05); /* translucent with brand tone */
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(93, 173, 226, 0.3);
+  box-shadow:
+    0 0 0 1px rgba(93, 173, 226, 0.2),
+    0 6px 14px rgba(0, 0, 0, 0.2);
+  transition: all 0.35s ease;
+}
+
+.project-block h3 {
+  color: #5DADE2;
+}
+
+.project-block .tools {
+  color: #117A8B;
 }
 
 .project-block:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
-  background-color: #f7fcff;
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(26, 82, 118, 0.12); /* slightly stronger on hover */
+  box-shadow:
+    0 0 0 1.5px rgba(93, 173, 226, 0.4),
+    0 10px 24px rgba(0, 0, 0, 0.4);
 }
 
 .project-content {
@@ -559,6 +770,72 @@ body.dark .gh-icon {
 body:not(.dark) .btn-icon {
   color: #1A5276;
 }
+.supporting-tools-text,
+.wetlab-text {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1A5276;
+  background: rgba(255, 255, 255, 0.7);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  max-width: 900px;
+  margin-inline: auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+body.dark .supporting-tools-text,
+body.dark .wetlab-text {
+  background: rgba(30, 30, 30, 0.6);
+  color: #f0f0f0;
+}
+
+@media (max-width: 768px) {
+    .expertise-block,
+    .work-block,
+    .education-block,
+    .skill-group,
+    .project-block {
+      width: 100% !important;
+      max-width: 100% !important;
+      padding: 1.2rem !important;
+    }
+
+    .projects-container {
+      grid-template-columns: 1fr !important;
+    }
+
+    .education-block h3,
+    .work-block h3,
+    .project-block h3,
+    .skill-group h3 {
+      font-size: 1.1rem !important;
+      text-align: center;
+    }
+
+    .section h1 {
+      font-size: 2.2rem;
+    }
+
+    .section {
+      padding: 4rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    .btn-icon {
+      padding: 0.6rem 1rem;
+    }
+  }
+
 </style>
 </head>
 
@@ -610,7 +887,7 @@ body:not(.dark) .btn-icon {
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
       <a href="#education">Education</a>
-      <a href="assets\Bioinformatics Industrial Resume.pdf" download>Resume</a>
+      <a href="assets\Bioinformatics Industrial Resume.pdf" target="_blank">Resume</a>
     </div>
     <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
   </div>
@@ -647,42 +924,42 @@ body:not(.dark) .btn-icon {
       <img src="icons/NGS.png" alt="NGS Icon"/>
       <h3>Next-Generation Sequencing (NGS) Data Processing</h3>
       <div class="line"></div>
-      <p>I design and execute end-to-end pipelines for RNA-Seq, DNA-Seq, and targeted panels — transforming raw reads into high-confidence biological interpretations.</p>
+      <p>Develop end-to-end pipelines for RNA-Seq, DNA-Seq, and targeted sequencing to transform raw reads into high-confidence, interpretable biological data.</p>
     </div>
     
     <div class="expertise-block">
       <img src="icons/G.png" alt="Genomics Icon"/>
       <h3>Genomic Data Analysis and Interpretation</h3>
       <div class="line"></div>
-      <p>I analyze genomic datasets to uncover meaningful patterns in gene regulation, variant impact, and disease association — with a focus on clarity and clinical relevance.</p>
+      <p>Analyze large-scale genomic datasets to interpret gene regulation, assess variant effects, and uncover clinically meaningful trait associations.</p>
     </div>
     
     <div class="expertise-block">
       <img src="icons/DS.png" alt="Data Science Icon"/>
       <h3>Bioinformatics and Statistical Data Analysis</h3>
       <div class="line"></div>
-      <p>I apply statistical rigor and computational tools to large-scale omics datasets — ensuring accurate, reproducible insights across diverse biological contexts.</p>
+      <p>Apply rigorous statistical methods and bioinformatics tools to generate accurate, reproducible insights from complex omics datasets.</p>
     </div>
     
     <div class="expertise-block">
       <img src="icons/ML.png" alt="Machine Learning Icon"/>
       <h3>Machine Learning Applications in Computational Biology</h3>
       <div class="line"></div>
-      <p>I develop and deploy ML models for classification, prediction, and dimensionality reduction — tailoring algorithms to fit biological questions and improve discovery.</p>
+      <p>Design and deploy ML models for classification, prediction, and dimensionality reduction, adapted to the intricacies of biological data.</p>
     </div>
     
     <div class="expertise-block">
       <img src="icons/chromosome.png" alt="GWAS-TWAS Icon"/>
       <h3>GWAS and TWAS Pipeline Development</h3>
       <div class="line"></div>
-      <p>I integrate genotype, gene expression, and chromatin interaction data using tools like PLINK, PrediXcan, and MetaXcan — enabling deeper trait-gene association analysis.</p>
+      <p>Build integrative workflows combining genotype, expression, and chromatin interaction data using PLINK, PrediXcan, and MetaXcan for trait-gene mapping.</p>
     </div>
     
     <div class="expertise-block">
       <img src="icons/pipeline.png" alt="Pipeline Automation Icon"/>
       <h3>Workflow Automation and Scalable Pipeline Design</h3>
       <div class="line"></div>
-      <p>I create modular, version-controlled workflows using Snakemake, Nextflow, and shell scripting — ensuring efficiency, scalability, and reproducibility across datasets.</p>
+      <p>Develop modular, version-controlled pipelines using Snakemake, Nextflow, and shell scripting to automate and scale bioinformatics workflows.</p>
     </div>
   
   </div>
@@ -760,49 +1037,95 @@ body:not(.dark) .btn-icon {
 </section>
 
 <section class="section" id="skills">
-  <h1>Skills</h1>
-  <div class="skills-container">
-    
+  <h1 class="text-3xl font-bold text-center mb-8">Skills</h1>
+
+  <!-- Part 1: Highlighted Skills as Icons -->
+  <div class="skills-container mb-10">
     <div class="skill-grid">
-      <!-- Paste all skill logos here -->
       <div class="skill-item"><img src="https://img.icons8.com/color/64/python.png" alt="Python"></div>
       <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="R"></div>
       <div class="skill-item"><img src="https://d33wubrfki0l68.cloudfront.net/8fe2cfeda869b96dde8c0776f5f305969f860002/c31dc/img/symbol/svg/monochrome_dark.svg" alt="Shell"></div>
-      <div class="skill-item"><img src="https://img.icons8.com/color/64/mysql-logo.png" alt="SQL"></div>
       <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg" alt="PySpark"></div>
       <div class="skill-item"><img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git"></div>
       <div class="skill-item"><img src="https://avatars.githubusercontent.com/u/6698688?s=200&v=4" alt="Nextflow"></div>
+      <div class="skill-item"><img src="https://avatars.githubusercontent.com/u/33450111?s=200&v=4" alt="Snakemake"></div>
       <div class="skill-item"><img src="https://img.icons8.com/color/64/docker.png" alt="Docker"></div>
-          <!-- AWS -->
-    <div class="skill-item">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/93/Amazon_Web_Services_Logo.svg/768px-Amazon_Web_Services_Logo.svg.png" alt="AWS">
-    </div>
-    <!-- Snakemake -->
-    <div class="skill-item">
-      <img src="https://avatars.githubusercontent.com/u/33450111?s=200&v=4" alt="Snakemake">
-    </div>
-    <!-- NCBI -->
-    <div class="skill-item">
-      <img src="https://www.ncbi.nlm.nih.gov/core/assets/style-guide/img/nih-symbol.png" alt="NCBI">
-    </div>
-      <div class="skill-item"><img src="https://img.icons8.com/ios-glyphs/64/1A5276/github.png" alt="GitHub"></div> 
+      <div class="skill-item"><img src="https://img.icons8.com/ios-glyphs/64/1A5276/github.png" alt="GitHub"></div>
       <div class="skill-item"><img src="https://cdn.prod.website-files.com/64934a44d8e5c1c0ad207f62/66e798270dcb8cb0f12f50ae_FastQC.png" alt="FastQC"></div>
       <div class="skill-item"><img src="icons/DESeq2.png" alt="DESeq2"></div>
       <div class="skill-item"><img src="icons/edgeR.png" alt="edgeR"></div>
-      <div class="skill-item"><img src="https://lh3.googleusercontent.com/EQG-IiwCivtoW6UzARBc_7uaVBrQ6b5nMtAE-tRCIVLz59sst09hqaHPh2Z1oFhVhdKeuHFkIJVKXX4FM651" alt="AlphaFold"></div>
-      <div class="skill-item"><img src="icons/PyMol.png" alt="PyMOL"></div>
-      <div class="skill-item"><img src="icons/ChimeraX-logo.png" alt="ChimeraX"></div>
-      <div class="skill-item"><img src="https://raw.githubusercontent.com/galaxyproject/galaxy/dev/static/favicon.ico" alt="Galaxy"></div> 
     </div>
-    <p class="supporting-tools-text">
-      FeatureCounts · GSEA · MetaXcan · PLINK · Trimmomatic
-    </p>
-    <p class="wetlab-text">
-      DNA/RNA Extraction · qPCR · Western Blotting · Gel Electrophoresis · MIC Assay · ELISA · Antibacterial Testing · Protein Docking
-    </p>
-    
+  </div>
+
+  <!-- Part 2: Remaining Skills in Categorized Text Grid -->
+  <div class="skills-container">
+    <div class="skill-group">
+      <h3>Bioinformatics Tools</h3>
+      <ul>
+        <li>FeatureCounts</li>
+        <li>GSEA</li>
+        <li>MetaXcan</li>
+        <li>PLINK</li>
+        <li>Trimmomatic</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Programming</h3>
+      <ul>
+        <li>Python</li>
+        <li>R</li>
+        <li>Bash / Shell</li>
+        <li>SQL</li>
+        <li>PySpark</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Workflow & Infra</h3>
+      <ul>
+        <li>Snakemake</li>
+        <li>Nextflow</li>
+        <li>Git</li>
+        <li>Docker</li>
+        <li>AWS</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Databases</h3>
+      <ul>
+        <li>NCBI</li>
+        <li>GEO</li>
+        <li>Ensembl</li>
+        <li>UCSC Genome Browser</li>
+        <li>KEGG</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Wet Lab Skills</h3>
+      <ul>
+        <li>DNA/RNA Extraction</li>
+        <li>qPCR</li>
+        <li>Western Blotting</li>
+        <li>Gel Electrophoresis</li>
+        <li>MIC Assay</li>
+        <li>ELISA</li>
+        <li>Antibacterial Testing</li>
+        <li>Protein Docking</li>
+      </ul>
+    </div>
+    <div class="skill-group">
+      <h3>Soft Skills</h3>
+      <ul>
+        <li>Scientific Communication</li>
+        <li>Problem Solving</li>
+        <li>Reproducibility Practices</li>
+        <li>Time Management</li>
+        <li>Attention to Detail</li>
+        <li>Team Collaboration</li>
+      </ul>
+    </div>
   </div>
 </section>
+
 
 <section class="section" id="education">
   <h1>Education</h1>
@@ -812,6 +1135,7 @@ body:not(.dark) .btn-icon {
       <h3>MS: Bioinformatics and Computational Biology</h3>
       <div class="sub">University of Texas at Dallas (UTD) — Expected May 2025</div>
       <div class="sub">GPA: 3.20 / 4.00</div>
+      <div class="line"></div>
       <div class="courses">
         <strong>Relevant Coursework:</strong><br>
         • Applied Bioinformatics<br>
@@ -828,6 +1152,7 @@ body:not(.dark) .btn-icon {
       <h3>Advanced Diploma: Bioinformatics</h3>
       <div class="sub">Bharati Vidyapeeth University (BVDU) — 2022</div>
       <div class="sub">GPA: 9.14/10</div>
+      <div class="line"></div>
       <div class="courses">
         <strong>Relevant Coursework:</strong><br>
         • Biological Informatics<br>
@@ -843,8 +1168,9 @@ body:not(.dark) .btn-icon {
 
     <div class="education-block">
       <h3>BSc: Microbiology, Biochemistry, Chemistry</h3>
-      <div class="sub">Sri Venkateswara University (SVU) — 2020</div>
+      <div class="sub">Sri Venkateswara University (SVU) — May 2020</div>
       <div class="sub">GPA: 8.20/10</div>
+      <div class="line"></div>
       <div class="courses">
         <strong>Relevant Coursework:</strong><br>
         • Microbial Physiology<br>
