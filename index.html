@@ -106,9 +106,9 @@ nav a.active {
 
 
 .nav a:hover { color: #3498db; }
-    .hero {
+.hero {
       min-height: 100vh;
-      padding: 6rem 2rem;
+      padding: 2rem 2rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -116,13 +116,37 @@ nav a.active {
       text-align: center;
       background: transparent;
     }
+
+.hero img {
+  border-radius: 20px;
+  width: 240px; /* Slightly reduced from 240px for better balance */
+  height: auto;
+  object-fit: cover;
+  margin-top: 0rem;
+  margin-bottom: 0.2rem; /* Adds just the right gap to the name */
+  background: none;
+  box-shadow: none;
+}
+.hero h1 {
+  font-size: 3.5rem;
+  margin-top: 0rem;        /* Add this */
+  margin-bottom: 0.2rem;   /* Slightly shrink this */
+  font-weight: 700;
+  color: #1A5276;
+}
+@media (max-width: 600px) {
+  .hero img {
+    width: 120px;
+  }
+}
+
 nav a.active {
       color: #3498db;
       border-bottom: 2px solid #3498db;
     }
     .hero h1 {
       font-size: 3.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 0rem;
       font-weight: 700;
       color: #1A5276;
     }
@@ -138,7 +162,7 @@ nav a.active {
     }
 
 
-  .btn-icon {
+.btn-icon {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -154,19 +178,26 @@ nav a.active {
     transition: 0.3s ease;
   }
 
-  .btn-icon:hover {
+ .btn-icon:hover {
     background: rgba(93, 173, 226, 0.25);
     box-shadow: 0 6px 16px rgba(93, 173, 226, 0.4);
     transform: translateY(-2px);
   }
-
-  .btn-icon img {
+.btn-icon img {
   width: 20px;
-  height: auto;
-  object-fit: contain;
-  margin-right: 0.5rem;
+  height: 20px;
+  margin-right: 0.4rem;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  top: 1px;
 }
-
+.btn-icon {
+  padding: 0.65rem 1.75rem;
+}
     .section {
       min-height: 80vh;
       padding: 6rem 2rem;
@@ -843,6 +874,14 @@ body.dark .wetlab-text {
   background: rgba(30, 30, 30, 0.6);
   color: #f0f0f0;
 }
+.typed-text {
+  font-size: 1.3rem;
+  color: #5dade2;
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+  font-weight: 600;
+  display: block;
+}
 
 @media (max-width: 768px) {
     .expertise-block,
@@ -934,7 +973,7 @@ body.dark .wetlab-text {
   <div class="nav-container">
     <div class="nav-links">
       <a href="#about">About Me</a>
-      <a href="#main">Professional Journey</a>
+      <a href="#main">Experience</a>
       <a href="assets/Bioinformatics Industrial Resume.pdf" target="_blank">CV</a>
     </div>
     <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
@@ -942,27 +981,30 @@ body.dark .wetlab-text {
 </nav>
 
 <section class="hero" id="about">
-  <h1>Pranava Upparlapalli</h1>
-  <p>Bioinformatician with hands-on experience in building scalable pipelines and analyzing genomic, transcriptomic, and epigenomic datasets to support biological discovery and translational research.</p>
-  <div class="contact-buttons">
-    <div class="button-row">
-      <a href="mailto:pxu.bioinfo@gmail.com" class="btn-icon">
-        <img src="icons/email.png" alt="Email Icon" /> Email
-      </a>
-      <a href="https://linkedin.com/in/pranava-u" target="_blank" class="btn-icon">
-        <img src="icons/linkedin.png" alt="LinkedIn Icon" /> LinkedIn
-      </a>
-      <a href="https://github.com/Bit-2310" target="_blank" class="btn-icon">
-        <img src="icons/github.png" alt="GitHub Icon" /> GitHub
-      </a>
+    <img src="icons/profile.png" alt="Pranava Upparlapalli">
+    <h1>Pranava Upparlapalli</h1>
+    <span id="typed" class="typed-text"></span>
+    <p>Bioinformatician with experience in developing scalable pipelines and analyzing complex genomic, transcriptomic, and epigenomic datasets for biological discovery.</p>
+    <blockquote>"Bridging biology and data with clarity and purpose."</blockquote>
+    <div class="contact-buttons">
+      <div class="button-row">
+        <a href="mailto:pxu.bioinfo@gmail.com" class="btn-icon">
+          <img src="icons/email.png" alt="Email Icon" /> Email
+        </a>
+        <a href="https://linkedin.com/in/pranava-u" target="_blank" class="btn-icon">
+          <img src="icons/linkedin.png" alt="LinkedIn Icon" /> LinkedIn
+        </a>
+        <a href="https://github.com/Bit-2310" target="_blank" class="btn-icon">
+          <img src="icons/github.png" alt="GitHub Icon" /> GitHub
+        </a>
+      </div>
+      <div class="button-row">
+        <a class="btn-icon" href="assets/Bioinformatics Industrial Resume.pdf" download>
+          <img src="icons/resume.png" alt="Resume Icon" /> Download Resume
+        </a>
+      </div>
     </div>
-    <div class="button-row">
-      <a class="btn-icon" href="assets\Bioinformatics Industrial Resume.pdf" download>
-        <img src="icons/resume.png" alt="Resume Icon" /> Download Resume
-      </a>
-    </div>
-  </div>
-</section>
+  </section>
 
 <div id="main">
 <section class="section" id="expertise">
@@ -1306,6 +1348,29 @@ window.addEventListener('scroll', () => {
 });
 
 </script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Typed("#typed", {
+  strings: [
+  "Bioinformatics Specialist.",
+  "NGS Pipeline Developer.",
+  "Genomic Data Analyst.",
+  "TWAS & GWAS Engineer.",
+  "Multi-Omics Integrator.",
+  "R & Python Programmer.",
+  "Workflow Architect.",
+  "Reproducibility Advocate."
+  ],
+  typeSpeed: 50,
+  backSpeed: 30,
+  backDelay: 1000,
+  loop: true,
+  smartBackspace: true,
+  showCursor: false 
+});
 
+  });
+</script>
 </body>
 </html>
