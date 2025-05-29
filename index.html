@@ -25,35 +25,87 @@
       top: 0;
       left: 0;
     }  
-  nav {
-  position: fixed;
+#main, #about {
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+#main.hidden, #about.hidden {
+  opacity: 0;
+  transform: translateY(40px);
+  pointer-events: none;
+  position: absolute;
   width: 100%;
-  background: rgba(255,255,255,0.9);
-  padding: 1rem 1rem;
-  display: flex;
-  justify-content: space-between; /* this fixes the layout */
-  align-items: center;
+  z-index: -1;
+}
+
+#main.visible, #about.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+  z-index: 1;
+}
+nav {
+  position: fixed;
+  top: 1.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.7rem 1.8rem;
+  background: rgba(255, 255, 255, 0.1); /* transparent white */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 60px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   z-index: 1000;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  max-width: calc(100% - 2rem);
 }
 
 .nav-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
-  margin: auto;
-  width: 100%;
+  gap: 2rem;
+}
+body.dark nav {
+  background: rgba(30, 30, 30, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
 }
 
+
 .nav-links a {
-  margin: 0 1rem;
-  color: #1A5276;
+  display: inline-block;
+  margin: 0 0.6rem;
+  padding: 0.6rem 1.4rem;
+  background: #1A5276; /* Deep navy blue capsule */
+  color: #ffffff; /* White text */
+  border-radius: 40px;
+  font-weight: 600;
   text-decoration: none;
-  font-weight: 650;
-  transition: color 0.5s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  border: 1.5px solid #5dade2; /* Sky blue outline */
 }
-nav a:hover { color: #3498db; }
+
+.nav-links a:hover {
+  background: #5dade2; /* Bright sky blue on hover */
+  color: #0f1e2e; /* Very dark text for contrast */
+  box-shadow: 0 6px 20px rgba(93, 173, 226, 0.6);
+  transform: scale(1.06);
+}
+
+nav a.active {
+  background: #5dade2;
+  color: #0f1e2e !important;
+  border: 2px solid #117A8B;
+}
+
+
+.nav a:hover { color: #3498db; }
     .hero {
       min-height: 100vh;
       padding: 6rem 2rem;
@@ -881,13 +933,9 @@ body.dark .wetlab-text {
 <nav>
   <div class="nav-container">
     <div class="nav-links">
-      <a href="#about">About</a>
-      <a href="#expertise">Expertise</a>
-      <a href="#work">Work</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="assets\Bioinformatics Industrial Resume.pdf" target="_blank">Resume</a>
+      <a href="#about">About Me</a>
+      <a href="#main">Professional Journey</a>
+      <a href="assets/Bioinformatics Industrial Resume.pdf" target="_blank">CV</a>
     </div>
     <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
   </div>
@@ -895,7 +943,7 @@ body.dark .wetlab-text {
 
 <section class="hero" id="about">
   <h1>Pranava Upparlapalli</h1>
-  <p>Bioinformatician and Computational Biologist specializing in multi-omics analysis, workflow development, and data-driven discovery. I translate complex biological data into actionable insights that advance research in genomics and human health.</p>
+  <p>Bioinformatician with hands-on experience in building scalable pipelines and analyzing genomic, transcriptomic, and epigenomic datasets to support biological discovery and translational research.</p>
   <div class="contact-buttons">
     <div class="button-row">
       <a href="mailto:pxu.bioinfo@gmail.com" class="btn-icon">
@@ -916,6 +964,7 @@ body.dark .wetlab-text {
   </div>
 </section>
 
+<div id="main">
 <section class="section" id="expertise">
   <h1>Areas of Expertise</h1>
   <div class="expertise-container">
@@ -1185,6 +1234,7 @@ body.dark .wetlab-text {
     </div>
   </div>
 </section>
+</div>
 
 <a href="#" class="scroll-to-top" aria-label="Scroll to top">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
