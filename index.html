@@ -46,29 +46,31 @@
   position: relative;
   z-index: 1;
 }
+
 nav {
   position: fixed;
   top: 1.2rem;
   left: 50%;
   transform: translateX(-50%);
-  padding: 0.7rem 1.8rem;
-  background: rgba(255, 255, 255, 0.1); /* transparent white */
+  padding: 0.5rem 1.2rem; /* reduced padding */
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border-radius: 60px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  border-radius: 50px; /* slightly smaller */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* slightly lighter shadow */
   z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   border: 1px solid rgba(255, 255, 255, 0.15);
   max-width: calc(100% - 2rem);
+  font-size: 0.9rem; /* reduce font size */
 }
 
 .nav-container {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.2rem;
 }
 body.dark nav {
   background: rgba(30, 30, 30, 0.7);
@@ -79,11 +81,12 @@ body.dark nav {
 
 .nav-links a {
   display: inline-block;
-  margin: 0 0.6rem;
-  padding: 0.6rem 1.4rem;
+  margin: 0 0.4rem;
+  padding: 0.45rem 1rem;
   background: #1A5276; /* Deep navy blue capsule */
   color: #ffffff; /* White text */
-  border-radius: 40px;
+  border-radius: 32px;
+  font-size: 0.85rem; /* slightly smaller font size */
   font-weight: 600;
   text-decoration: none;
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
@@ -160,6 +163,72 @@ nav a.active {
       gap: 1rem;
       margin-top: 1rem;
     }
+
+@media (max-width: 768px) {
+  nav {
+    bottom: 1rem;
+    top: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    width: calc(100% - 2rem);
+    max-width: max-content;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .nav-container {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    gap: 0rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    justify-content: center;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+  }
+
+  .nav-links a {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.7rem;
+    border-radius: 18px;
+    white-space: nowrap;
+    margin: 0.12;
+  }
+    #theme-toggle {
+    margin-left: 0.5rem;
+    margin-right: 0;
+    padding: 0.35rem;
+    font-size: 0.9rem;
+    min-width: 2rem;
+    min-height: 2rem;
+    border-radius: 50%;
+  }
+  .theme-toggle-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.4rem;
+  }
+
+  #theme-toggle {
+    margin: 0;
+    font-size: 1rem;
+    padding: 0.4rem;
+    border-radius: 50%;
+    min-width: 2rem;
+    min-height: 2rem;
+  }
+}
 
 
 .btn-icon {
@@ -973,8 +1042,8 @@ body.dark .wetlab-text {
   <div class="nav-container">
     <div class="nav-links">
       <a href="#about">About Me</a>
-      <a href="#main">Experience</a>
-      <a href="assets/Bioinformatics Industrial Resume.pdf" target="_blank">CV</a>
+      <a href="#main">Portfolio</a>
+      <a href="assets/Bioinformatics Industrial Resume.pdf" target="_blank">Resume</a>
     </div>
     <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
   </div>
