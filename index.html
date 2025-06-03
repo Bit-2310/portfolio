@@ -139,7 +139,7 @@ nav a.active {
 }
 @media (max-width: 600px) {
   .hero img {
-    width: 120px;
+    width: 140px;
   }
 }
 
@@ -769,64 +769,42 @@ body:not(.dark) .education-block strong {
 
 .projects-container {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
   gap: 2rem;
-  max-width: 750px;
+  max-width: 1100px;
+  width: 100%;
   margin-top: 2rem;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (min-width: 768px) {
-  .projects-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-.section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding: 0 2rem;
+  justify-content: center;
 }
 
 .project-block {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 1.8rem;
+  border: 1px solid rgba(93, 173, 226, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  text-decoration: none; /* Removes underline */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: all 0.3s ease;
   position: relative;
-  padding: 1.5rem 1.2rem;
-  border-radius: 20px;
-  width: calc(50% - 2rem);
-  min-width: 300px;
-  text-decoration: none;
-  color: inherit;
-
-  background: rgba(26, 82, 118, 0.05); /* translucent with brand tone */
-  backdrop-filter: blur(14px);
-  border: 1px solid rgba(93, 173, 226, 0.3);
-  box-shadow:
-    0 0 0 1px rgba(93, 173, 226, 0.2),
-    0 6px 14px rgba(0, 0, 0, 0.2);
-  transition: all 0.35s ease;
-}
-
-.project-block h3 {
-  color: #5DADE2;
-}
-
-.project-block .tools {
-  color: #117A8B;
+  color: #2C3E50;
 }
 
 .project-block:hover {
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(26, 82, 118, 0.12); /* slightly stronger on hover */
-  box-shadow:
-    0 0 0 1.5px rgba(93, 173, 226, 0.4),
-    0 10px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+  border: 1.5px solid rgba(93, 173, 226, 0.5);
+  background: rgba(255, 255, 255, 0.09);
 }
 
 .project-content {
-  padding-right: 2rem;
+  padding-right: 1.5rem;
 }
 
 .project-block h3 {
@@ -837,15 +815,16 @@ body:not(.dark) .education-block strong {
 }
 
 .project-block p {
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: #333;
+  margin-bottom: 0.5rem;
 }
 
 .project-block .tools {
   font-size: 0.85rem;
   font-weight: 500;
-  color: #2C3E50;
+  color: #117A8B;
 }
 
 .gh-icon {
@@ -862,6 +841,49 @@ body:not(.dark) .education-block strong {
   transform: scale(1.2);
   opacity: 1;
 }
+.project-block h3,
+.project-block p,
+.project-block .tools {
+  text-decoration: none;
+}
+
+
+@media (max-width: 768px) {
+  .projects-container {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .project-block {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 1.2rem 1rem;
+    box-sizing: border-box;
+  }
+
+  .project-block h3 {
+    font-size: 1.1rem;
+    text-align: center;
+  }
+
+  .project-block p,
+  .project-block .tools {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .gh-icon {
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+
 
 body.dark {
   background: #0f0f11;
@@ -1356,6 +1378,7 @@ body.dark .wetlab-text {
 
 
 <script>
+
 tsParticles.load("tsparticles", {
   background: { color: { value: "transparent" } },
   fpsLimit: 60,
@@ -1365,21 +1388,38 @@ tsParticles.load("tsparticles", {
       resize: true
     },
     modes: {
-      repulse: { distance: 100, duration: 0.4 }
+      repulse: { distance: 60, duration: 0.3 }
     }
   },
   particles: {
+    number: {
+      density: { enable: true, area: 1200 },
+      value: 35
+    },
     color: { value: "#5DADE2" },
-    links: { color: "#5DADE2", distance: 150, enable: true, opacity: 0.5, width: 1 },
-    collisions: { enable: false },
-    move: { direction: "none", enable: true, outModes: "bounce", random: false, speed: 2, straight: false },
-    number: { density: { enable: true, area: 800 }, value: 80 },
-    opacity: { value: 0.5 },
     shape: { type: "circle" },
-    size: { value: { min: 1, max: 5 } }
+    opacity: { value: 0.35 },
+    size: { value: { min: 1, max: 8 } },
+    move: {
+      enable: true,
+      speed: 0.75,
+      direction: "none",
+      random: true,
+      straight: false,
+      outModes: { default: "bounce" }
+    },
+    links: {
+      enable: true,
+      color: "#5DADE2",
+      distance: 150,
+      opacity: 0.45,
+      width: 0.8
+    },
+    collisions: { enable: false }
   },
   detectRetina: true
 });
+
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
