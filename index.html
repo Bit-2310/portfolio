@@ -267,18 +267,20 @@ nav a.active {
 .btn-icon {
   padding: 0.65rem 1.75rem;
 }
-    .section {
-      min-height: 80vh;
-      padding: 6rem 2rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 1s ease;
-    }
+.section {
+  min-height: auto;             /* Don't force tall sections */
+  padding: 4rem 1.5rem 3rem;    /* ⬅️ Reduced vertical spacing */
+  margin-bottom: 2rem;          /* ⬅️ Add if needed to separate cleanly */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s ease;
+}
+
     .section.visible {
       opacity: 1;
       transform: translateY(0);
@@ -1420,7 +1422,6 @@ tsParticles.load("tsparticles", {
   detectRetina: true
 });
 
-
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1432,7 +1433,6 @@ const observer = new IntersectionObserver(entries => {
 document.querySelectorAll('.section').forEach(section => {
   observer.observe(section);
 });
-
 
 const sections = document.querySelectorAll('section');
 const navLinks = document.querySelectorAll('nav a');
@@ -1471,9 +1471,9 @@ window.addEventListener('scroll', () => {
   "Workflow Architect.",
   "Reproducibility Advocate."
   ],
-  typeSpeed: 50,
+  typeSpeed: 40,
   backSpeed: 30,
-  backDelay: 1000,
+  backDelay: 2000,
   loop: true,
   smartBackspace: true,
   showCursor: false 
