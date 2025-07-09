@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<<<<<<< HEAD
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="icons/favicon.png" type="image/png">
-=======
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" href="icons/favicon.png" type="image/png">
->>>>>>> c34f4adced67f4ec4262ce9929dd31b72bb29dfc
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="icons/favicon.png" type="image/png">
 <meta name="description" content="Portfolio of Pranava Upparlapalli – Bioinformatics Scientist with expertise in NGS, TWAS, ML, and computational biology.">
 <meta name="author" content="Pranava Upparlapalli">
 <meta property="og:image" content="icons/favicon.png">
@@ -279,6 +276,153 @@ nav a.active {
 .btn-icon {
   padding: 0.65rem 1.75rem;
 }
+
+/* === DROPDOWN CONTAINER === */
+.portfolio-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* === TOGGLE BUTTON === */
+#portfolio-toggle {
+  background: #1A5276;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 32px;
+  padding: 0.45rem 1rem;
+  border: 1.5px solid #5dade2;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#portfolio-toggle:hover {
+  background: #5dade2;
+  color: #0f1e2e;
+  box-shadow: 0 6px 20px rgba(93, 173, 226, 0.6);
+  transform: scale(1.06);
+}
+
+/* === DROPDOWN MENU === */
+.portfolio-menu {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid rgba(0, 191, 255, 0.4);
+  border-radius: 22px;
+  padding: 1rem 0.9rem;
+  box-shadow: 0 12px 28px rgba(0, 191, 255, 0.15);
+  backdrop-filter: blur(14px);
+  z-index: 1001;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* === VISIBLE MENU === */
+.portfolio-menu.show {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  animation: fadeIn 0.3s ease;
+}
+
+/* === DROPDOWN LINKS === */
+.portfolio-menu a {
+  background: rgba(255, 255, 255, 0.4);
+  color: #003b66;
+  font-weight: 500;
+  padding: 0.65rem 1.2rem;
+  border-radius: 40px;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.portfolio-menu a:hover {
+  background: #00bfff;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 0 10px #00bfff, inset 0 0 5px rgba(255, 255, 255, 0.6);
+  border: 1px solid #00bfff;
+}
+
+/* === DARK MODE === */
+body.dark .portfolio-menu {
+  background: rgba(20, 20, 30, 0.92);
+  border-color: #00bfff;
+}
+
+body.dark .portfolio-menu a {
+  background: rgba(255, 255, 255, 0.07);
+  color: #d8ecff;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.6);
+}
+
+body.dark .portfolio-menu a:hover {
+  background: #00bfff;
+  color: #0f1e2e;
+  box-shadow: 0 0 10px #00bfff, inset 0 0 5px rgba(0, 0, 0, 0.4);
+  border: 1px solid #00bfff;
+}
+
+/* === ANIMATION === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px) translateX(-50%); }
+  to { opacity: 1; transform: translateY(0) translateX(-50%); }
+}
+
+/* === MOBILE UPWARDS OVERRIDE === */
+@media (max-width: 768px) {
+  .portfolio-dropdown {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  #portfolio-toggle {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .portfolio-menu {
+    top: auto;
+    bottom: calc(100% + 12px);
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 300px;
+    font-size: 0.9rem;
+    background: rgba(20, 20, 30, 0.95);
+    box-shadow: 0 -12px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .portfolio-menu.show {
+    animation: menuSlideUp 0.25s ease;
+  }
+
+  @keyframes menuSlideUp {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0px);
+    }
+  }
+}
+
+
 .section {
   min-height: auto;             /* Don't force tall sections */
   padding: 4rem 1.5rem 3rem;    /* ⬅️ Reduced vertical spacing */
@@ -1087,7 +1231,16 @@ body.dark .wetlab-text {
   <div class="nav-container">
     <div class="nav-links">
       <a href="#about">About Me</a>
-      <a href="#main">Portfolio</a>
+      <div class="portfolio-dropdown">
+      <button id="portfolio-toggle" class="btn-icon">Portfolio ▾</button>
+      <div class="portfolio-menu" id="portfolio-menu">
+        <a href="#expertise">Areas of Expertise</a>
+        <a href="#work">Work Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+      </div>
+    </div>
       <a href="assets/Bioinformatics Industrial Resume.pdf" target="_blank">Resume</a>
     </div>
     <button id="theme-toggle" class="btn-icon" aria-label="Toggle theme">🌙</button>
@@ -1518,5 +1671,22 @@ window.addEventListener('scroll', () => {
 
   });
 </script>
+<script>
+  const toggleButton = document.getElementById('portfolio-toggle');
+  const dropdownMenu = document.querySelector('.portfolio-menu');
+
+  toggleButton.addEventListener('click', () => {
+    dropdownMenu.classList.toggle('show');
+    document.body.classList.toggle('menu-active', dropdownMenu.classList.contains('show'));
+  });
+
+  window.addEventListener('click', (e) => {
+    if (!document.querySelector('.portfolio-dropdown').contains(e.target)) {
+      dropdownMenu.classList.remove('show');
+      document.body.classList.remove('menu-active');
+    }
+  });
+</script>
+
 </body>
 </html>
