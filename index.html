@@ -476,19 +476,18 @@
         transform: scale(1.15);
     }
     #skills .section-container {
-        max-width: 1100px;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        max-width: 1000px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
     .skill-group {
-        text-align: left; /* Changed from center to left */
+        text-align: left;
     }
     .skill-group h3 {
-        text-align: center; /* Keep heading centered */
+        text-align: center;
     }
     .skill-group ul {
-      list-style-type: disc; /* Use standard bullets */
-      padding-left: 20px; /* Indent the list */
-      text-align: left;
+      list-style-type: disc;
+      padding-left: 20px;
     }
     .skill-group li {
       margin-bottom: 0.4rem;
@@ -624,6 +623,12 @@
       .section { padding: 4rem 1rem; }
       .section h1 { font-size: 2.2rem; }
       .section-container, .projects-container { grid-template-columns: 1fr; }
+      
+      /* FIX for mobile dropdown menu */
+      .portfolio-menu {
+        top: auto;
+        bottom: calc(100% + 12px);
+      }
     }
   </style>
 </head>
@@ -783,7 +788,7 @@
     <section class="section" id="skills">
         <h1>Skills & Proficiencies</h1>
         <div class="featured-skills-grid">
-                  <div class="skill-item"><img src="https://img.icons8.com/color/64/python.png" alt="Python"></div>
+                    <div class="skill-item"><img src="https://img.icons8.com/color/64/python.png" alt="Python"></div>
                     <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="R"></div>
                     <div class="skill-item"><img src="https://d33wubrfki0l68.cloudfront.net/8fe2cfeda869b96dde8c0776f5f305969f860002/c31dc/img/symbol/svg/monochrome_dark.svg" alt="Shell"></div>
                     <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg" alt="PySpark"></div>
