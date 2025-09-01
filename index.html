@@ -494,7 +494,38 @@
       font-size: 1rem;
       font-weight: 500;
     }
-    
+
+    .skills-summary{
+  max-width: 900px;
+  margin: 8px auto 28px;
+  padding: 12px 18px;
+  text-align: center;
+  color: var(--subtext-light);
+  line-height: 1.6;
+  font-size: clamp(0.98rem, 0.92rem + 0.3vw, 1.06rem);
+  background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0));
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  box-shadow: 0 0 32px -14px var(--accent-glow) inset;
+}
+.skills-summary::before{
+  content:"";
+  display:block;
+  width:76px;
+  height:3px;
+  margin:0 auto 12px;
+  background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+  border-radius:2px;
+  opacity:.9;
+}
+
+/* Dark mode */
+html.dark .skills-summary{
+  color: var(--subtext-dark);
+  border-color: var(--border-dark);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0));
+  box-shadow: 0 0 36px -14px var(--accent-glow) inset;
+}   
     /* Education Card Specifics */
     .education-block .courses {
         margin-top: 1rem;
@@ -661,8 +692,8 @@
       <img src="icons/profile.png" alt="Profile picture of Pranava Upparlapalli">
       <h1>Pranava Upparlapalli</h1>
       <span id="typed" class="typed-text"></span>
-      <p>As a bioinformatics scientist (M.S.), I thrive on partnering with research teams to solve their most pressing data challenges. I build effective, automated pipelines using Python, R, and Nextflow to support and advance their data-driven scientific goals.</p>
-      <blockquote>"Bridging biology and data with clarity and purpose."</blockquote>
+      <p>I design scalable pipelines and analytical frameworks that transform complex genomic and transcriptomic data into actionable insights. Skilled in Python, R, Nextflow, Docker, and AWS, I build reproducible solutions that accelerate discovery and translational research across RNA-Seq, GWAS/TWAS, and variant analysis.</p>
+      <blockquote>"Turning data into impact across genomics and computational biology."</blockquote>
       <div class="contact-buttons">
         <div class="button-row">
           <a href="mailto:pxu.bioinfo@gmail.com" class="btn-icon">
@@ -785,62 +816,75 @@
       </div>
     </section>
 
-    <section class="section" id="skills">
-        <h1>Skills & Proficiencies</h1>
-        <div class="featured-skills-grid">
-                    <div class="skill-item"><img src="https://img.icons8.com/color/64/python.png" alt="Python"></div>
-                    <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="R"></div>
-                    <div class="skill-item"><img src="https://d33wubrfki0l68.cloudfront.net/8fe2cfeda869b96dde8c0776f5f305969f860002/c31dc/img/symbol/svg/monochrome_dark.svg" alt="Shell"></div>
-                    <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/f/f3/Apache_Spark_logo.svg" alt="PySpark"></div>
-                    <div class="skill-item"><img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git"></div>
-                    <div class="skill-item"><img src="https://avatars.githubusercontent.com/u/6698688?s=200&v=4" alt="Nextflow"></div>
-                    <div class="skill-item"><img src="https://avatars.githubusercontent.com/u/33450111?s=200&v=4" alt="Snakemake"></div>
-                    <div class="skill-item"><img src="https://img.icons8.com/color/64/docker.png" alt="Docker"></div>
-        </div>
-        <div class="section-container" id="skills-container">
-              <div class="card skill-group">
-                <h3>Programming & Databases</h3>
-                <ul>
-                  <li>Python, R, Bash/Shell, SQL</li>
-                  <li>Pandas, NumPy</li>
-                  <li>NCBI, Ensembl, GEO, KEGG, dbSNP</li>
-                </ul>
-              </div>
-              <div class="card skill-group">
-                <h3>Machine Learning</h3>
-                <ul>
-                  <li>Scikit-learn, PyTorch</li>
-                  <li>Deep Learning (CNNs, ResNet)</li>
-                  <li>Model Evaluation</li>
-                </ul>
-              </div>
-              <div class="card skill-group">
-                <h3>Workflow & Cloud</h3>
-                <ul>
-                  <li>Nextflow, Docker, Git, Conda</li>
-                  <li>Slurm, HPC</li>
-                  <li>AWS (S3, EC2)</li>
-                </ul>
-              </div>
-              <div class="card skill-group">
-                <h3>Genomics & Analysis</h3>
-                <ul>
-                  <li>RNA-Seq, ChIP-Seq, scRNA-Seq (Seurat, Scanpy)</li>
-                  <li>Variant Calling (GATK), Hi-C</li>
-                  <li>GWAS, TWAS, eQTL</li>
-                </ul>
-              </div>
-              <div class="card skill-group">
-                <h3>Documentation & Governance</h3>
-                <ul>
-                    <li>Version Control</li>
-                    <li>Reproducibility</li>
-                    <li>Good Documentation Practice (GDP)</li>
-                    <li>Evaluation Metrics & Risk-Based Assessment</li>
-                </ul>
-              </div>
-        </div>
-    </section>
+<section class="section" id="skills">
+  <h2>Skills & Proficiencies</h2>
+
+  <!-- Summary line -->
+  <p class="skills-summary">
+    Skilled in RNA-Seq data analysis, Python, R, and reproducible workflows using Nextflow, Docker, and AWS. 
+    Experienced in GWAS, TWAS, Hi-C integration, and applying machine learning (PyTorch, TensorFlow) to 
+    genomic datasets with a focus on scalability and high-performance computing.
+  </p>
+
+  <!-- Featured icons -->
+  <div class="featured-skills-grid">
+    <div class="skill-item"><img src="https://img.icons8.com/color/64/python.png" alt="Python"></div>
+    <div class="skill-item"><img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/R_logo.svg" alt="R"></div>
+    <div class="skill-item"><img src="https://avatars.githubusercontent.com/u/6698688?s=200&v=4" alt="Nextflow"></div>
+    <div class="skill-item"><img src="https://img.icons8.com/color/64/docker.png" alt="Docker"></div>
+    <div class="skill-item"><img src="https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png" alt="Git"></div>
+    <div class="skill-item"><img src="https://avatars.githubusercontent.com/u/33450111?s=200&v=4" alt="Snakemake"></div>
+  </div>
+
+  <!-- Skill cards -->
+  <div class="section-container" id="skills-container">
+    
+    <div class="card skill-group">
+      <h3>Programming & Databases</h3>
+      <ul>
+        <li>Python, R, Bash/Shell, SQL</li>
+        <li>Pandas, NumPy</li>
+      </ul>
+    </div>
+
+    <div class="card skill-group">
+      <h3>Machine Learning</h3>
+      <ul>
+        <li>Scikit-learn, PyTorch, TensorFlow</li>
+        <li>Deep Learning (CNNs, ResNet)</li>
+        <li>Model Evaluation & Data Augmentation</li>
+      </ul>
+    </div>
+
+    <div class="card skill-group">
+      <h3>Workflow & Cloud</h3>
+      <ul>
+        <li>Nextflow, Snakemake, Docker, Conda, Git</li>
+        <li>Slurm, HPC</li>
+        <li>AWS (S3, EC2)</li>
+      </ul>
+    </div>
+
+    <div class="card skill-group">
+      <h3>Genomics & Analysis</h3>
+      <ul>
+        <li>RNA-Seq, scRNA-Seq (Seurat, Scanpy), ChIP-Seq</li>
+        <li>Variant Calling (GATK), Hi-C</li>
+        <li>GWAS, TWAS, eQTL, DESeq2, edgeR, GSEA</li>
+      </ul>
+    </div>
+
+    <div class="card skill-group">
+      <h3>Reproducibility & Governance</h3>
+      <ul>
+        <li>Version Control (Git)</li>
+        <li>Reproducible Research Practices</li>
+        <li>Good Documentation Practice (GDP)</li>
+        <li>Evaluation Metrics & Risk-Based Assessment</li>
+      </ul>
+    </div>
+  </div>
+</section>
     
     <section class="section" id="education">
         <h1>Education</h1>
